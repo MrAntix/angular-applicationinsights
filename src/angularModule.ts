@@ -53,7 +53,6 @@ angularAppInsights.run([
     }
 ]);
 
-
 class AppInsightsProvider implements angular.IServiceProvider {
     // configuration properties for the provider
     private _options = new Options();
