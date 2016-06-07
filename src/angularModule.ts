@@ -27,7 +27,7 @@ angularAppInsights.provider("applicationInsightsService", () => new AppInsightsP
 angularAppInsights.run([
     "$rootScope", "$location", "applicationInsightsService", ($rootScope, $location, applicationInsightsService: ApplicationInsights) => {
 
-        var locationChangeStartOn : number;
+        var locationChangeStartOn: number;
 
         $rootScope.$on("$locationChangeStart", () => {
 
@@ -38,7 +38,8 @@ angularAppInsights.run([
 
         $rootScope.$on("$viewContentLoaded", (e, view) => {
 
-            if (applicationInsightsService.options.autoPageViewTracking) {
+            if (applicationInsightsService.options.autoPageViewTracking
+                && locationChangeStartOn > 0) {
 
                 var duration = (new Date()).getTime() - locationChangeStartOn;
                 var name = applicationInsightsService.options.applicationName + $location.path();
